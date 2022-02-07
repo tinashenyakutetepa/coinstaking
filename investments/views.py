@@ -40,8 +40,8 @@ def create_orders(request):
         'redirectURL': 'https://app.datlabeswatini.co/investments/success',
         'payerName': 'Bob',
         'payerEmail': 'no_reply@alfacoins.com', 
-        'test':1,
-	    'status':'completed'       
+        #'test':1,
+	    #'status':'completed'       
             },
     description='Staking investment',   
     ) 
