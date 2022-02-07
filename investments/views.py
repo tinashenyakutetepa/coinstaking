@@ -123,17 +123,17 @@ def stake(request):
 
 
 @csrf_exempt
-def notification_status(request):
+def notification_status(request):    
     print('Initial Notification')
-    
-    try:
-        data=json.loads(request.body)
-        label = data['id']
-        url = data['coin_received_amount']
-        print(label, url) 
-    except:        
-        print('No Notification')
-        return HttpResponse('')
+    if request.method=='POST':    
+        try:
+            data=json.loads(request.body)
+            label = data['id']
+            url = data['coin_received_amount']
+            print(label, url) 
+        except:        
+            print('No Notification')
+            return HttpResponse('')
 
 def success_view(request):
    
