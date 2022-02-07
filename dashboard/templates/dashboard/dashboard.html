@@ -1,0 +1,202 @@
+{% extends 'globals/index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="crypto-ticker m-b-15">
+            <ul id="webticker-dark-icons">
+                <li data-update="item1"><i class="cc DOGE"></i> DOGE <span class="coin-value"> ${{price.dogecoin.usd}}</span></li>
+                <li data-update="item2"><i class="cc BTC"></i> BTC <span class="coin-value"> ${{price.bitcoin.usd}}</span></li>
+                <li data-update="item3"><i class="cc ETH"></i> ETH <span class="coin-value"> ${{price.ethereum.usd}}</span></li>
+                <li data-update="item4"><i class="cc GAME"></i> GAME <span class="coin-value"> ${{price.gamecredits.usd}}</span></li>
+                <li data-update="item5"><i class="cc USDT"></i> USDT <span class="coin-value"> ${{lbc}}</span></li>
+                <li data-update="item6"><i class="cc NEO"></i> NEO <span class="coin-value"> ${{price.neo.usd}}</span></li>
+                <li data-update="item7"><i class="cc STEEM"></i> STE <span class="coin-value"> ${{price.steem.usd}}</span></li>
+                <li data-update="item8"><i class="cc LTC"></i> LIT <span class="coin-value"> ${{price.litecoin.usd}}</span></li>
+                <li data-update="item9"><i class="cc NOTE"></i> NOTE <span class="coin-value"> ${{price.dnotes.usd}}</span></li>
+                <li data-update="item10"><i class="cc MINT"></i> MINT <span class="coin-value"> ${{price.mintcoin.usd}}</span></li>
+                <li data-update="item11"><i class="cc IOTA"></i> IOT <span class="coin-value"> ${{price.iotex.usd}}</span></li>                
+                
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-wallet f-s-40 color-primary"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i> {{mycoins}}</h4>
+                    <p>${{myusd}}</p>
+                    <p class="m-b-0">Available coins</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-comment f-s-40 color-success"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i> {{todays_interest_doge}}</h4>
+                    <p>${{todays_interest_usd}}</p>
+                    <p class="m-b-0">Generated Interest</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-vector f-s-40 color-warning"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i> {{bonus}}</h4>
+                    <p>${{bonus_usd}}</p>
+                    <p class="m-b-0">Affiliate Bonus</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% if request.user.username == 'furiousvirus' %}
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-location-pin f-s-40 color-danger"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i>  {{balance}}</h4>
+                    <p>{{users}} Users</p>
+                    <p class="m-b-0">Wallet Balance</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% elif request.user.username == 'trishaldo' %}
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-location-pin f-s-40 color-danger"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i>  {{balance}}</h4>
+                    <p>${{balance}}</p>
+                    <p class="m-b-0">Tinas</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% elif request.user.username == 'donkumalo' %}
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-location-pin f-s-40 color-danger"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i>  {{balance}}</h4>
+                    <p>${{balance}}</p>
+                    <p class="m-b-0">Mu</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+    <div class="col-md-3">
+        <div class="card p-30">
+            <div class="media">
+                <div class="media-left meida media-middle">
+                    <span><i class="ti-location-pin f-s-40 color-danger"></i></span>
+                </div>
+                <div class="media-body text-right">
+                    <h4><i class="cc DOGE"></i> 278</h4>
+                    <p>${{balance}}</p>
+                    <p class="m-b-0">Withdrawn Amount</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+<div class="row">
+
+    <!-- column -->
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Statistics</h4>
+                <div id="chartdiv3"></div>
+            </div>
+        </div>
+    </div>
+    <!-- column -->
+
+</div>
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Downliners</h4>
+                <h6 class="card-subtitle">This is a list of people who joined using your link</h6>
+                <div class="table-responsive m-t-40">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Country</th>
+                                <th>Status</th>
+                                <th>Join date</th>
+                                <th>Stacking Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for downliner in downliners %}
+                            <tr>
+                                <td>
+                                    {% if downliner.first_name and downliner.last_name %}
+                                    {{downliner.first_name}} {{downliner.last_name}}
+                                    {% else %}
+                                    Not Updated
+                                    {% endif %}
+
+                                </td>
+                                <td>
+                                    {% if downliner.country %}
+                                    {{downliner.country}}
+                                    {% else %}
+                                    Not Updated
+                                    {% endif %}
+                                    </td>
+                                <td>
+                                    {% if downliner.verified %}
+                                    Verified
+                                    {% else %}
+                                    Not Verified
+                                    {% endif %}
+                                </td>
+                                <td>{{downliner.date_created}}</td>
+                                <td>
+                                    {% if downliner.first_name %}
+                                    2 Investments
+                                    {% else %}
+                                    No Investment yet
+                                    {% endif %}
+                                    </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

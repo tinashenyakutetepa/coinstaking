@@ -1,0 +1,35 @@
+{% extends 'globals/index.html' %}
+{% block content %}
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Referral Bonus</h4>             
+                <h6 class="card-subtitle">Your referral bonus from downliners who have invested</h6>                        
+                <div class="table-responsive m-t-40">
+                    <table id="myTable" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                                <th>Downliner Ref Code</th>
+                                <th>Benefiter</th>
+                                <th>Bonus Coins</th>                                
+                                <th>Date</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for bonus in bonuses %}
+                            <tr>
+                                <td>{{bonus.user.user_profile.code}}</td>
+                                <td>{{bonus.benefiter.user_profile.first_name}} {{bonus.benefiter.user_profile.last_name}}</td>
+                                <td><i class="cc DOGE"></i> {{bonus.amount}}</td>                                
+                                <td>{{bonus.date_created}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
