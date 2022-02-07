@@ -38,8 +38,8 @@ def create_orders(request):
     currency='LTCT',
     order_id= ref, #ref,   
     options={                  
-        'notificationURL': 'https://app.datlabeswatini.co/investments/notification-status/',
-        'redirectURL': 'https://app.datlabeswatini.co/investments/success',
+        'notificationURL': 'http://app.datlabeswatini.co/investments/notification-status/',
+        'redirectURL': 'http://app.datlabeswatini.co/investments/success',
         'payerName': 'Bob',
         'payerEmail': 'no_reply@alfacoins.com', 
         'test':1,
