@@ -17,6 +17,7 @@ from interests.models import Rate
 from alfacoins_api_python import ALFACoins
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
+from django.views.decorators.csrf import csrf_exempt
 
 
 # investments views here.
@@ -123,6 +124,8 @@ def stake(request):
     }
     return render(request, 'investments/test.html', context)
 
+
+@csrf_exempt
 def notification_status(request):
     print('Initial Notification')
     if request.method == 'POST':
