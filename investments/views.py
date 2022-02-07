@@ -127,7 +127,7 @@ def notification_status(request):
     print('Initial Notification')
     
     try:
-        data=json.loads(request.body)
+        data=json.load(request.body)
         label = data['id']
         url = data['coin_received_amount']
         print(label, url) 
