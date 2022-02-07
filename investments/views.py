@@ -17,7 +17,6 @@ from interests.models import Rate
 from alfacoins_api_python import ALFACoins
 from django.http import HttpResponse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
-from django.views.decorators.csrf import csrf_exempt
 
 
 # investments views here.
@@ -125,13 +124,18 @@ def stake(request):
     return render(request, 'investments/test.html', context)
 
 
-@csrf_exempt
+
 def notification_status(request):
     print('Initial Notification')
-    if request.method == 'POST':
-        json_data = json.loads(request.body)
-        print('Notification', json_data)
-        return JsonResponse(json_data)
+    
+    try:
+        data=json.loads(request.raw_post_data)
+        label = data['id']
+        url = data['coin_received_amount']
+        print(label, url) 
+    except:        
+        print('No Notification')
+        return HttpResponse('')
 
 def success_view(request):
    
