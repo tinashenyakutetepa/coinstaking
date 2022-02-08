@@ -12,7 +12,7 @@ from affiliates.models import Affiliates
 from interests.models import Rate
 
 from alfacoins_api_python import ALFACoins
-from django.http import HttpResponse
+from django.http import JsonResponse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_exempt
 
@@ -133,7 +133,7 @@ def notification_status(request, *args, **kwargs):
             print(label, url) 
         except:        
             print('No Notification')
-        return HttpResponse('')
+        return JsonResponse(data)
 
       
 
