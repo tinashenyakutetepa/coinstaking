@@ -125,14 +125,16 @@ def stake(request):
 @csrf_exempt
 def notification_status(request, *args, **kwargs):    
     print('Initial Notification')
-    print(request)
+    
     if request.method=='POST':    
         try:
+            print(request)
             data=json.loads(request.body)
             label = data['id']
             url = data['coin_received_amount']
             print(label, url) 
-        except:        
+        except:    
+            print(request)    
             print('No Notification')
         return JsonResponse(data)
 
