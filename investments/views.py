@@ -128,7 +128,7 @@ def notification_status(request, *args, **kwargs):
     print('Initial Notification')
     if request.method=='POST':    
         try:
-            data=json.loads(request.raw_post_data)
+            data=json.loads(request.body)
             id = data['id']
             coin_received_amount = data['coin_received_amount']
             print(data, id, coin_received_amount) 
