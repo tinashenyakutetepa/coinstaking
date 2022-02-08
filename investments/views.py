@@ -40,8 +40,8 @@ def create_orders(request):
         'redirectURL': 'https://app.datlabeswatini.co/investments/success',
         'payerName': 'Bob',
         'payerEmail': 'no_reply@alfacoins.com', 
-        #'test':1,
-	    #'status':'completed'       
+        'test':1,
+	    'status':'completed'       
             },
     description='Staking investment',   
     ) 
@@ -125,6 +125,7 @@ def stake(request):
 @csrf_exempt
 def notification_status(request, *args, **kwargs):    
     print('Initial Notification')
+    print(request)
     if request.method=='POST':    
         try:
             data=json.loads(request.body)
