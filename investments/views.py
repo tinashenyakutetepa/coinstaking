@@ -127,13 +127,13 @@ def notification_status(request, *args, **kwargs):
     print('Initial Notification')
     if request.method=='POST':    
         try:
-            data=json.loads(request.body)
+            data=json.loads(request.Post['data'])
             id = data['id']
             coin_received_amount = data['coin_received_amount']
             print(data) 
         except:        
             print('No Notification')
-        return JsonResponse(data)
+    return JsonResponse(data)
 
       
 
