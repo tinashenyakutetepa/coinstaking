@@ -1,4 +1,5 @@
 import json
+import requests
 from django.shortcuts import render, redirect
 
 from userProfile.models import User_profile
@@ -12,7 +13,7 @@ from affiliates.models import Affiliates
 from interests.models import Rate
 
 from alfacoins_api_python import ALFACoins
-from django.http import JsonResponse
+from django.http import HttpResponse, JsonResponse
 from django.views.decorators.clickjacking import xframe_options_sameorigin
 from django.views.decorators.csrf import csrf_exempt
 
@@ -127,13 +128,13 @@ def notification_status(request, *args, **kwargs):
     print('Initial Notification')
     if request.method=='POST':    
         try:
-            data=json.loads(request.Post['data'])
+            data=json.loads(request.body)
             id = data['id']
             coin_received_amount = data['coin_received_amount']
             print(data) 
         except:        
             print('No Notification')
-    return JsonResponse(data)
+    return HttpResponse("Done")
 
       
 
