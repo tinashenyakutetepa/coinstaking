@@ -5,14 +5,15 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">Stakings</h4>
-                <div class="row">                    
+                <div class="row">
                     <div class="col-md-8">
                         <h6 class="card-subtitle">This is a list of Doge coins you've stacked</h6>
                     </div>
                     <div class="col-md-4">
-                        <a class="btn btn-primary float-right" href="{% url 'test' %}" role="button">Stack your coins</a>
+                        <a class="btn btn-primary float-right" href="{% url 'test' %}" role="button">Stack your
+                            coins</a>
                     </div>
-                </div>               
+                </div>
                 <div class="table-responsive m-t-40">
                     <table id="myTable" class="table table-bordered table-striped">
                         <thead>
@@ -30,12 +31,10 @@
                                 <td>{{stake.invstmt_ref}}</td>
                                 <td>$ {{stake.amount_in_usd}}</td>
                                 <td><i class="cc DOGE"></i> {{stake.amount_in_doge}}</td>
-                                <td> 
-                                    {% if stake.status == "Processing" %}
-                                    <button type="button" class="btn btn-info btn-xs m-b-10 m-l-5" disabled>{{stake.status}}</button>
-                                    {% else %}
-                                    <button type="button" class="btn btn-info btn-xs m-b-10 m-l-5" disabled>{{stake.status}} esle</button>
-                                    {% endif %}
+                                <td>
+                                    <button type="button" class="btn btn-info btn-xs m-b-10 m-l-5"
+                                        disabled>{{stake.status}}</button>
+
                                 </td>
                                 <td>{{stake.date_created}}</td>
                             </tr>

@@ -124,14 +124,18 @@ def stake(request):
 
 
 @csrf_exempt
-def notification_status(request, *args, **kwargs):    
+def notification_status(request, *args, **kwargs): 
+       
     print('Initial Notification')
     if request.method=='POST':    
         try:
             data=json.loads(request.body)
-            id = data['id']
-            coin_received_amount = data['coin_received_amount']
-            print(data, id, coin_received_amount) 
+            id = data['order_id']
+            status = data['status']
+            #print(data, id, status)             
+            Investment.objects.filter(invstmt_ref = id).update(
+                status = status
+            )
         except:        
             print('No Notification')
     return HttpResponse("Done")

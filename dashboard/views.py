@@ -17,13 +17,13 @@ def dashboard_view(request):
     
     #Live Crypto rates from coingeckoapi
     cg = CoinGeckoAPI()
-    p = cg.get_price(ids=['bitcoin', 'litecoin', 'ethereum', 'gamecredits','neo','dnotes', 'mintcoin', 'iotex', 'dash', 'steem', 'lbry-credits', 'dogecoin'], vs_currencies='usd')
-    lbc = p['lbry-credits']['usd']
+    p = cg.get_price(ids=['bitcoin', 'litecoin', 'ethereum', 'gamecredits','neo','dnotes', 'mintcoin', 'iotex', 'dash', 'steem', 'tether', 'dogecoin'], vs_currencies='usd')
+    usdt = p['tether']['usd']
      
     #Total coins Available
     obtain_total = Bank.objects.get(user = request.user)
     available_amount_doge = obtain_total.total_coins
-    dogerate = Decimal(p['dogecoin']['usd'])
+    dogerate = Decimal(p['tether']['usd'])
     available_amount_usd = "{:.2f}".format(available_amount_doge * dogerate)
 
     #Interest
@@ -43,8 +43,8 @@ def dashboard_view(request):
         bonuses = Affiliates.objects.filter(benefiter = request.user).aggregate(Sum('amount'))['amount__sum']      
         bonus_in_doge = "{:.3f}".format(bonuses)
         bonus_in_usd = "{:.2f}".format(Decimal(bonus_in_doge) * dogerate)
-    except:
 
+    except:
         bonus_in_doge = 0
         bonus_in_usd = 0
 
@@ -54,7 +54,7 @@ def dashboard_view(request):
         'bonus':bonus_in_doge,
         'bonus_usd':bonus_in_usd,
         'price':p,
-        'lbc':lbc,
+        'usdt':usdt,
         'mycoins':available_amount_doge,
         'myusd': available_amount_usd,
         'todays_interest_doge':todays_interest_doge,
