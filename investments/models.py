@@ -22,3 +22,5 @@ class Bank(models.Model):
 
     def __str__(self):
         return self.user.username + " | " + self.user.email + " | " + str(self.total_coins)
+
+#tINASHE
