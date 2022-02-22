@@ -135,9 +135,10 @@ def notification_status(request, *args, **kwargs):
             Investment.objects.filter(invstmt_ref = id).update(
                 status = status
             )
-        except:        
+        except: 
             print('No Notification')
-    return JsonResponse(data)
+            return JsonResponse(data)             
+    return HttpResponse("Done")
 
       
 
